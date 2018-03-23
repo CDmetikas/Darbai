@@ -6,10 +6,15 @@
     <title> Šachmatų lenta </title>
     <meta charset="UTF-8">
     <style>
+        body {
+            vertical-align: middle;
+        }
+        
         table {
             border-collapse: collapse;
             width: 100%;
-            height: 100%
+            height: 100%;
+            border: none;
         }
         
         td {
@@ -20,8 +25,11 @@
         
         td.remelis,
         td.remelis1 {
-            border: none;
             font-size: 3vmin;
+            border: none;
+            background-color: wheat;
+            color: #6D442E;
+            font-weight: bold;
         }
         
         td.remelis1 {
@@ -29,17 +37,20 @@
         }
         
         td.lenta {
-            background-color: rgb(184, 182, 182);
+            background-color: #6D442E;
             font-size: 5vmin;
         }
         
         td.lenta1 {
             font-size: 5vmin;
+            background-color: wheat;
         }
         
         div {
+            margin: auto;
             width: 90vmin;
             height: 90vmin;
+            box-shadow: 10px 10px 5px #6D442E;
         }
     </style>
 </head>
