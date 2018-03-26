@@ -1,0 +1,76 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <title> uždavinys 4 </title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        .container {
+            width: 100%;
+            height: 62.5vw;
+            margin-bottom: 3vw;
+            background-color: rgba(58, 146, 247, 0.548);
+        }
+        
+        .rectangle {
+            width: 60vw;
+            height: 25vw;
+            background-color: purple;
+            margin: 3vw 0;
+        }
+        
+        .stroked {
+            background-color: greenyellow;
+        }
+        
+        .block {
+            width: 25vw;
+            height: 25vw;
+            margin-bottom: 1vw;
+            background-color: rgb(56, 56, 255);
+        }
+        
+        .container:hover {
+            background-color: rgb(0, 128, 11);
+        }
+        
+        p {
+            float: right;
+            font-weight: bold;
+            font-size: 4vw;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <p>container</p>
+        <div class="block">
+            <p>block</p>
+        </div>
+        <div class="block">
+            <p>block</p>
+        </div>
+    </div>
+    <div class="block stroked" style="border: 1vw solid black;">
+        <p>block stroked</p>
+    </div>
+    <div class="rectangle">
+        <p>rectangle</p>
+        <div class="block" style="background-color:red;">
+            <p>block</p>
+        </div>
+    </div>
+    <div class="rectangle stroked">
+        <p>rectangle stroked</p>
+    </div>
+</body>
+
+</html>
