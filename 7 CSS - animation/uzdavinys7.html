@@ -25,22 +25,92 @@
         .R {
             border: 3px solid red;
             background-color: rgba(255, 0, 0, 0.3);
-            top: 5px;
+            top: 20%;
             left: 20%;
+            animation: mymoveR 2s forwards;
+            animation-delay: 1s;
+        }
+        
+        @keyframes mymoveR {
+            0% {
+                top: 20%;
+            }
+            25% {
+                top: -150px;
+            }
+            55% {
+                top: 40px;
+            }
+            80% {
+                top: -20px;
+            }
+            100% {
+                top: 5px;
+            }
         }
         
         .G {
             border: 3px solid rgb(0, 255, 0);
             background-color: rgba(0, 255, 0, 0.3);
-            bottom: 5px;
-            left: 5px;
+            bottom: 20%;
+            left: 20%;
+            animation: mymoveG 2s forwards;
+            animation-delay: 1s;
+        }
+        
+        @keyframes mymoveG {
+            0% {
+                bottom: 20%;
+                left: 20%;
+            }
+            25% {
+                bottom: -150px;
+                left: -150px;
+            }
+            55% {
+                bottom: 40px;
+                left: 40px;
+            }
+            80% {
+                bottom: -20px;
+                left: -20px;
+            }
+            100% {
+                bottom: 5px;
+                left: 5px;
+            }
         }
         
         .B {
             border: 3px solid blue;
             background-color: rgba(0, 0, 255, 0.3);
-            bottom: 5px;
-            right: 5px;
+            bottom: 20%;
+            right: 20%;
+            animation: mymoveB 2s forwards;
+            animation-delay: 1s;
+        }
+        
+        @keyframes mymoveB {
+            0% {
+                bottom: 20%;
+                right: 20%;
+            }
+            25% {
+                bottom: -150px;
+                right: -150px;
+            }
+            55% {
+                bottom: 40px;
+                right: 40px;
+            }
+            80% {
+                bottom: -20px;
+                right: -20px;
+            }
+            100% {
+                bottom: 5px;
+                right: 5px;
+            }
         }
         
         span {
