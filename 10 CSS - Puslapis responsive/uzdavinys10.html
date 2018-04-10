@@ -1,0 +1,274 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <title> This is the title </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: rgb(92, 92, 92);
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        /* ____________________________________________Header____________________________________________ */
+        
+        #header {
+            font-weight: bold;
+            height: 100px;
+            flex-direction: row;
+            align-items: center;
+            display: flex;
+            border-bottom: 2px solid rgba(85, 167, 153, 0.5);
+            justify-content: space-between;
+            padding-right: 50px;
+            padding-left: 50px;
+        }
+        
+        ul {
+            list-style-type: none;
+            display: flex;
+            margin: 50px;
+        }
+        
+        li {
+            margin: 20px;
+        }
+        /* ____________________________________________Drop down menu____________________________________________ */
+        
+        .dropdown {
+            display: none;
+        }
+        
+        .dropbtn {
+            background-color: rgba(255, 255, 255, 0);
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            color: rgb(92, 92, 92);
+        }
+        
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-content {
+            display: none;
+            right: 10px;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        
+        .dropdown-content a {
+            color: rgb(92, 92, 92);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #f1f1f1
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .dropdown:hover .dropbtn {
+            color: black;
+        }
+        /* ____________________________________________Content____________________________________________ */
+        
+        #content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #forma {
+            box-shadow: 0 0 8px;
+            border-radius: 2px;
+            width: 450px;
+            margin: 20px;
+            padding: 10px 20px 20px 20px;
+        }
+        
+        #forma a {
+            color: rgb(59, 163, 146);
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        #forma input[type=text] {
+            width: 100%;
+            padding: 7px;
+            border: 1px solid rgba(110, 110, 110, 0.589);
+            color: rgb(85, 85, 85);
+        }
+        
+        input[type=button] {
+            padding: 5px 15px;
+            margin-right: 5px;
+            background-color: rgb(59, 163, 146);
+            border: none;
+            color: white;
+        }
+        
+        input[type=button]:hover {
+            background-color: rgba(36, 99, 88, 0.651);
+        }
+        /* ____________________________________________Adds____________________________________________ */
+        
+        #add {
+            background-color: rgb(59, 163, 146);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            color: white;
+            justify-content: space-between;
+        }
+        
+        #add1 {
+            margin: 20px 30px 40px 30px;
+            padding: 0 30px;
+        }
+        
+        #add2 {
+            background-color: rgba(36, 99, 88, 0.651);
+            border-radius: 30px;
+            padding: 10px 20px;
+            margin: 40px;
+        }
+        /* ____________________________________________Footer____________________________________________ */
+        
+        #footer {
+            background-color: rgb(56, 56, 56);
+            display: flex;
+            color: white;
+        }
+        
+        #footer input[type=text] {
+            padding: 7px;
+            border: 1px solid rgba(110, 110, 110, 0.589);
+            color: rgb(85, 85, 85);
+        }
+        
+        .str {
+            flex: 1;
+            padding: 20px 50px;
+        }
+        
+        .str h3 {
+            font-weight: bold;
+        }
+        
+        @media screen and (max-width: 992px) {
+            ul {
+                display: none;
+            }
+            .dropdown {
+                display: block;
+            }
+            #add {
+                flex-direction: column;
+                text-align: center;
+            }
+            #footer {
+                flex-direction: column;
+            }
+            #add1 {
+                margin: 10px;
+            }
+            #add2 {
+                margin: 20px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- ---------------------------------------------------Header--------------------------------------------------- -->
+    <div id="header">
+        <div>
+            <img src="http://blogmanagement.freelogodesign.org/Content/blog-img/201705171149017316c21af51-4de5-4868-a2fc-b42dc436466f.png" height="100" />
+        </div>
+        <ul>
+            <li><i class="fa fa-home" style="font-size: 22px"></i></li>
+            <li style="color:black;">PAGES</li>
+            <li>FEATURES</li>
+            <li>SHOP</li>
+            <li>ELEMENTS</li>
+            <li>MEGA MENU</li>
+            <li><i class="fa fa-search" style="font-size: 22px"></i> </li>
+        </ul>
+
+        <div class="dropdown">
+            <button class="dropbtn"><i class="fa fa-bars"></i> </button>
+            <div class="dropdown-content">
+                <a href="#">PAGES</a>
+                <a href="#">FEATURES</a>
+                <a href="#">SHOP</a>
+                <a href="#">ELEMENTS</a>
+                <a href="#">MEGA MENU</a>
+            </div>
+            <i class="fa fa-search" style="font-size: 22px; margin-left:10px;"></i>
+        </div>
+    </div>
+    <!-- ---------------------------------------------------Content--------------------------------------------------- -->
+    <div id="content">
+        <div id="forma">
+            <h1 style="margin:0 0 10px 0;"><strong>Login</strong></h1> Not signed up? <a href="">Sign up here</a><br><br>
+            <form>
+                <input type="text" name="email" value="Email"> <br><br>
+                <input type="text" name="password" value="Password"><br><br>
+                <input type="button" value="Login">| <a href="">Forgotten Password?</a>
+            </form>
+        </div>
+    </div>
+    <!-- ---------------------------------------------------Adds--------------------------------------------------- -->
+    <div id="add">
+        <div id="add1">
+            <h2><strong>AWESOME <span style="color:rgb(36, 99, 88);">FEATURES</span> </strong></h2> <strong>99.9% Uptime <span style="color:rgb(36, 99, 88)">/</span>  Free Upgrades <span style="color:rgb(36, 99, 88)">/</span> Fully Responsive <span style="color:rgb(36, 99, 88)">/</span> Bug Free</strong>            <br>
+        </div>
+        <a href="">
+            <div id="add2">Get AppStrap Today <i class="fa fa-arrow-right"></i></div>
+        </a>
+    </div>
+    <!-- ---------------------------------------------------Footer--------------------------------------------------- -->
+    <div id="footer">
+        <div class="str">
+            <h3>CONTACT US</h3><i class="fa fa-phone"></i> 019223 8092344 <br><i class="fa fa-envelope"></i> info@appstrapyheme.com <br><i class="fa fa-home"></i> Sunshine House, Survivle, SUN12 8BLU.
+        </div>
+        <div class="str">
+            <h3>ABOUT US</h3> Making the web a prettier place one template at a time! We make beautiful, quality, responsive Drupal & web templates!
+        </div>
+        <div class="str">
+            <h3>NEWSLETTER</h3> Stay up to date with our latest news and product releases by singing up to opur newsletter. <br> <br>
+            <form>
+                <input type="text" name="Email" value="Email">
+                <input type="button" value="Go">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
