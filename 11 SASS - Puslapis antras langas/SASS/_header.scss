@@ -1,0 +1,56 @@
+#header {
+    font-weight: bold;
+    height: 100px;
+    flex-direction: row;
+    align-items: center;
+    display: flex;
+    border-bottom: 2px solid $color_zalia;
+    justify-content: space-between;
+    padding-right: 5vw;
+    padding-left: 5vw;
+    ul {
+        list-style-type: none;
+        display: flex;
+    }
+    li {
+        margin: 20px;
+        &:hover {
+            color: $tamsi_zalia;
+        }
+    }
+    .dropdown {
+        display: none;
+        position: relative;
+        &:hover .dropdown-content {
+            display: block;
+        }
+        &:hover .dropbtn {
+            color: black;
+        }
+        .dropbtn {
+            background-color: rgba(255, 255, 255, 0);
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            color: $color_text;
+        }
+        .dropdown-content {
+            display: none;
+            right: 10px;
+            position: absolute;
+            background-color: $color_zalia;
+            min-width: 250px;
+            box-shadow: 0 0 20px;
+            // z-index: 1;
+            a {
+                color: white;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+            a:hover {
+                background-color: $tamsi_zalia;
+            }
+        }
+    }
+}

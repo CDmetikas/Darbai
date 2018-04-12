@@ -1,0 +1,105 @@
+#content_features {
+    display: flex;
+    flex-direction: column;
+    padding: 0 5vw;
+    h4 {
+        color: black;
+        font-weight: bold;
+    }
+    .top {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100px;
+    }
+    #content1 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        i {
+            font-size: 80px;
+            color: $color_zalia;
+        }
+        .content1add {
+            height: 250px;
+            width: 28vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1vw 2vw;
+        }
+    }
+    #c2andc3 {
+        display: flex;
+        justify-content: center;
+        #content2 {
+            width: 100%;
+            #c2container {
+                display: flex;
+                #c2left {
+                    display: flex;
+                    flex-direction: column;
+                    width: 300px;
+                    .c2leftitem {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        height: 100px;
+                        padding: 0 2vw;
+                        border-right: 2px solid $color_text * 2;
+                        i {
+                            font-size: 25px;
+                        }
+                    }
+                    .c2leftitem_selected {
+                        @extend .c2leftitem;
+                        color: $color_zalia;
+                        border-right: none;
+                        border-bottom: 2px solid $color_text * 2;
+                        border-left: 5px solid $color_zalia;
+                        border-top: 2px solid $color_text * 2;
+                        h4 {
+                            color: $color_zalia;
+                        }
+                    }
+                }
+                #c2right {
+                    flex: 1;
+                    padding: 0 3vw;
+                    i {
+                        font-size: 120px;
+                        color: $color_zalia;
+                        margin: 5px;
+                    }
+                }
+            }
+        }
+        #content3 {
+            width: 400px;
+            justify-content: center;
+            #c3item {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                margin-top: 50px;
+                padding: 20px;
+                width: 100%;
+                height: 120px;
+                background-color: $color_zalia;
+                h4 {
+                    color: white;
+                }
+                input[type=text] {
+                    padding: 7px;
+                    border: 1px solid rgba(110, 110, 110, 0.589);
+                    color: $color_text;
+                    margin: 0px;
+                    width: 70%;
+                }
+                input[type=button] {
+                    background-color: $color_text;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+#add {
+    background-color: $color_zalia;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: white;
+    justify-content: space-between;
+    #add1 {
+        margin: 20px 30px 40px 30px;
+        padding: 0 30px;
+    }
+    #add2 {
+        background-color: $tamsi_zalia;
+        border-radius: 30px;
+        padding: 10px 20px;
+        margin: 40px;
+    }
+}

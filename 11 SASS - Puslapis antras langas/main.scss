@@ -1,0 +1,33 @@
+$color_text: rgb(92, 92, 92);
+$color_zalia: rgb(59, 163, 146);
+$tamsi_zalia: rgb(36, 99, 88);
+@import "SASS/content_index";
+@import "SASS/content_features";
+@import "SASS/header";
+@import "SASS/footer";
+@import "SASS/add";
+@import "SASS/responsive";
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: $color_text;
+    a {
+        text-decoration: none;
+        margin: 0px;
+    }
+    input[type=button] {
+        padding: 5px 15px;
+        margin-right: 5px;
+        background-color: $color_zalia;
+        border: none;
+        color: white;
+        cursor: pointer;
+    }
+    h1,
+    h2,
+    h3,
+    h4 {
+        margin: 0;
+    }
+}
