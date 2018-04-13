@@ -1,0 +1,33 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <title> This is the title </title>
+    <meta charset="UTF-8">
+
+    <script type="text/javascript">
+        var plotis = 15;
+        var aukstis = 20;
+        var perimetras = 2 * (plotis + aukstis)
+        var plotas = plotis * aukstis
+        var istrizaine = Math.sqrt((plotis * plotis) + (aukstis * aukstis));
+
+        document.write("Plotis - " + plotis + "<br>");
+        document.write("Aukštis - " + aukstis + "<br><br>");
+        document.write("Perimetras - " + perimetras + "<br>");
+        document.write("Plotas - " + plotas + "<br>");
+        document.write("Istrizaine - " + istrizaine + "<br>");
+    </script>
+
+</head>
+
+<body>
+    <div style="border:1px solid black;">
+        <script type="text/javascript">
+            document.write(istrizaine);
+        </script>
+    </div>
+</body>
+
+</html>
