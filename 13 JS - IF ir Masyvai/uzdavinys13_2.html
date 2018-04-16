@@ -1,0 +1,60 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <title> This is the title </title>
+    <meta charset="UTF-8">
+
+    <script type="text/javascript">
+        function myFunction() {
+            var data = document.getElementById("data").value;
+            var numeriai = document.getElementById("numeriai").value;
+            var atstumas = parseInt(document.getElementById("atstumas").value);
+            var laikas = parseInt(document.getElementById("laikas").value);
+
+            var masyvas = [data, numeriai, atstumas, laikas];
+
+            var greitis = ((3600 / masyvas[3]) * masyvas[2]) / 1000;
+
+            document.getElementById("tdata").innerHTML = data;
+            document.getElementById("tnumeriai").innerHTML = numeriai;
+            document.getElementById("tatstumas").innerHTML = atstumas;
+            document.getElementById("tlaikas").innerHTML = laikas;
+            document.getElementById("tgreitis").innerHTML = greitis;
+
+        }
+    </script>
+</head>
+
+<body>
+    Data: <br>
+    <input id="data" type="text"> <br> Automobilio numeriai: <br>
+    <input id="numeriai" type="text"> <br> Nuvažiuotas atstumas metrais: <br>
+    <input id="atstumas" type="number"> <br> Važiavimo laikas sekundėm: <br>
+    <input id="laikas" type="number"> <br> <br>
+    <button onclick="myFunction()">Gerai</button><br> <br>
+
+    <table id="demo" border="1">
+
+        <tr>
+            <th>Data</th>
+            <th>Numeriai</th>
+            <th>Atstumas</th>
+            <th>Laikas</th>
+            <th>Greitis</th>
+        </tr>
+        <tr id="myTr">
+            <td id="tdata"></td>
+            <td id="tnumeriai"></td>
+            <td id="tatstumas"></td>
+            <td id="tlaikas"></td>
+            <td id="tgreitis"></td>
+        </tr>
+
+
+
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+.header {
+  background-color: white;
+  border: 1px solid black;
+}
+
+#content {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#content #forma {
+  border: 1px solid black;
+  width: 400px;
+  padding: 20px;
+  margin: 20px;
+}
+/*# sourceMappingURL=main.css.map */

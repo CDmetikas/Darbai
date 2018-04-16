@@ -1,0 +1,37 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <title> This is the title </title>
+    <meta charset="UTF-8">
+    <script type="text/javascript">
+        var a = parseInt(prompt("Iveskite krastine", ""));
+        var b = parseInt(prompt("Iveskite krastine", ""));
+        var c = parseInt(prompt("Iveskite krastine", ""));
+
+        var P = a + b + c;
+        var p = P / 2;
+        var S = Math.sqrt(p * (p - a) * (p - b) * (p - c));
+
+        if (a < b + c && b < a + c && c < a + b) {
+            if (a == b && a == c) {
+                document.write("Lygiakraštis, jo plotas = " + S)
+            } else if (a == b || a == c || b == c) {
+                document.write("Lygiašonis, jo plotas = " + S)
+            } else if (a * a == b * b + c * c || b * b == a * a + c * c || c * c == a * a + b * b) {
+                document.write("Status, jo plotas = " + S)
+            } else if (a != b && a != c && b != c) {
+                document.write("Įvairiakraštis, jo plotas = " + S)
+            }
+        } else {
+            document.write("Trikampis nesigauna")
+        }
+    </script>
+
+</head>
+
+<body>
+</body>
+
+</html>
