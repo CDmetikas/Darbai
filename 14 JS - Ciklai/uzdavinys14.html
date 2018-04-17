@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <title> This is the title </title>
+    <meta charset="UTF-8">
+
+</head>
+
+<body>
+    <table id="demo" border="1">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Numeriai</th>
+                <th>Atstumas</th>
+                <th>Laikas</th>
+                <th>Greitis</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script type="text/javascript">
+        var masyvas = [
+            ["2018", "URE834", 5000, 119],
+            ["2018", "MOR379", 4978, 249],
+            ["2018", "KPO257", 2549, 58],
+        ];
+
+
+        for (i = 0; i < masyvas.length; i++) {
+            var greitis = ((3600 / masyvas[i][3]) * masyvas[i][2]) / 1000;
+
+            document.querySelector("tbody").innerHTML += "<tr> <td>" + masyvas[i][0] + "</td> <td>" + masyvas[i][1] + "</td> <td>" + masyvas[i][2] + "</td> <td>" + masyvas[i][3] + "</td> <td>" + greitis.toFixed(2) + "</td></tr>";
+        }
+    </script>
+</body>
+
+</html>
