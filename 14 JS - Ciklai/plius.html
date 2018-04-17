@@ -5,69 +5,131 @@
 <head>
     <title> This is the title </title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: space-between;
+            padding: 50px;
+        }
+        
+        table {
+            min-width: 800px;
+        }
+    </style>
 
 </head>
 
 <body>
 
+    <div>
+        <h2 id="alert">Suveskite duomenis</h2> Data: <br>
+        <input id="data" type="text"> <br> <br> Automobilio numeriai: <br>
+        <input id="numeriai" type="text"> <br> <br> Nuvažiuotas atstumas metrais: <br>
+        <input id="atstumas" type="number"> <br> <br> Važiavimo laikas sekundėm: <br>
+        <input id="laikas" type="number"> <br> <br>
+        <button onclick="Prideti()">Pridėti</button> <br> <br>
+    </div>
+    <div>
+        <table id="demo" border="1">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Numeriai</th>
+                    <th>Atstumas m.</th>
+                    <th>Laikas s.</th>
+                    <th>Greitis km/h</th>
+                </tr>
+            </thead>
+            <tbody>
 
-    Data: <br>
-    <input id="data" type="text"> <br> Automobilio numeriai: <br>
-    <input id="numeriai" type="text"> <br> Nuvažiuotas atstumas metrais: <br>
-    <input id="atstumas" type="number"> <br> Važiavimo laikas sekundėm: <br>
-    <input id="laikas" type="number"> <br> <br>
-    <button onclick="myFunction()">Gerai</button><br> <br>
-
-
-
-    <table id="demo" border="1">
-        <thead>
-            <tr>
-                <th>Data</th>
-                <th>Numeriai</th>
-                <th>Atstumas</th>
-                <th>Laikas</th>
-                <th>Greitis</th>
-            </tr>
-        </thead>
-
-        <tbody>
-
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 
     <script type="text/javascript">
-        var masyvas = [
+        var masyvas = [];
 
-        ];
+        function Prideti() {
+            var data1 = document.getElementById("data").value;
+            var numeriai1 = document.getElementById("numeriai").value;
+            var atstumas1 = (document.getElementById("atstumas").value);
+            var laikas1 = (document.getElementById("laikas").value);
 
+            if (data1 == "" || numeriai1 == "" || atstumas1 == "" || laikas1 == "") {
+                document.getElementById("alert").innerHTML = "Visi laukai turi būti užpildyti!";
+                if (data1 == "") {
+                    document.getElementById("alert").style.color = "red";
+                    document.getElementById("data").style.borderColor = "red";
+                } else {
+                    document.getElementById("data").style.borderColor = "green";
+                }
+                if (numeriai1 == "") {
+                    document.getElementById("alert").style.color = "red";
+                    document.getElementById("numeriai").style.borderColor = "red";
+                } else {
+                    document.getElementById("numeriai").style.borderColor = "green";
+                }
+                if (atstumas1 == "") {
+                    document.getElementById("alert").style.color = "red";
+                    document.getElementById("atstumas").style.borderColor = "red";
+                } else {
+                    document.getElementById("atstumas").style.borderColor = "green";
+                }
+                if (laikas1 == "") {
+                    document.getElementById("alert").style.color = "red";
+                    document.getElementById("laikas").style.borderColor = "red";
+                } else {
+                    document.getElementById("laikas").style.borderColor = "green";
+                }
 
+            } else {
+                document.getElementById("alert").innerHTML = "Suveskite duomenis";
+                document.getElementById("alert").style.color = "";
+                document.getElementById("numeriai").style.borderColor = "green";
+                document.getElementById("atstumas").style.borderColor = "green";
+                document.getElementById("laikas").style.borderColor = "green";
+                document.getElementById("data").style.borderColor = "green";
 
+                var data = document.getElementById("data").value;
+                var numeriai = document.getElementById("numeriai").value;
+                var atstumas = parseInt(document.getElementById("atstumas").value);
+                var laikas = parseInt(document.getElementById("laikas").value);
 
-        function myFunction() {
+                masyvas.push([data, numeriai, atstumas, laikas]);
 
-            var data = document.getElementById("data").value;
-            var numeriai = document.getElementById("numeriai").value;
-            var atstumas = parseInt(document.getElementById("atstumas").value);
-            var laikas = parseInt(document.getElementById("laikas").value);
+                document.querySelector("tbody").innerHTML = "";
 
-
-            masyvas.push([data, numeriai, atstumas, laikas]);
-
-
-
-
-            ciklas();
-
-
+                ciklas();
+            }
         }
+
+        function Trinti(i) {
+            masyvas.splice(i, 1);
+            document.querySelector("tbody").innerHTML = "";
+            ciklas();
+        }
+
 
         function ciklas() {
             for (i = 0; i < masyvas.length; i++) {
                 var greitis = ((3600 / masyvas[i][3]) * masyvas[i][2]) / 1000;
 
-                document.querySelector("tbody").innerHTML += "<tr> <td>" + masyvas[i][0] + "</td> <td>" + masyvas[i][1] + "</td> <td>" + masyvas[i][2] + "</td> <td>" + masyvas[i][3] + "</td> <td>" + greitis.toFixed(2) + "</td></tr>";
+                document.querySelector("tbody").innerHTML += "<tr> <td>" + masyvas[i][0] + "</td> <td>" + masyvas[i][1] + "</td> <td>" + masyvas[i][2] + "</td> <td>" + masyvas[i][3] + "</td> <td>" + greitis.toFixed(2) + "</td>" + '<td> <button onclick="Trinti(' + i + ')">Ištrinti</button></td></tr>';
             }
+        }
+
+        function didziausias() {
+            for (i = 0; i < masyvas.length; i++) {
+
+            }
+
+
+            var dmasyvas = [a[0][2], a[1][2], a[2][2]];
         }
     </script>
 </body>
