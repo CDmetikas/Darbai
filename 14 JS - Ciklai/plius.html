@@ -1,0 +1,75 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <title> This is the title </title>
+    <meta charset="UTF-8">
+
+</head>
+
+<body>
+
+
+    Data: <br>
+    <input id="data" type="text"> <br> Automobilio numeriai: <br>
+    <input id="numeriai" type="text"> <br> Nuvažiuotas atstumas metrais: <br>
+    <input id="atstumas" type="number"> <br> Važiavimo laikas sekundėm: <br>
+    <input id="laikas" type="number"> <br> <br>
+    <button onclick="myFunction()">Gerai</button><br> <br>
+
+
+
+    <table id="demo" border="1">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Numeriai</th>
+                <th>Atstumas</th>
+                <th>Laikas</th>
+                <th>Greitis</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script type="text/javascript">
+        var masyvas = [
+
+        ];
+
+
+
+
+        function myFunction() {
+
+            var data = document.getElementById("data").value;
+            var numeriai = document.getElementById("numeriai").value;
+            var atstumas = parseInt(document.getElementById("atstumas").value);
+            var laikas = parseInt(document.getElementById("laikas").value);
+
+
+            masyvas.push([data, numeriai, atstumas, laikas]);
+
+
+
+
+            ciklas();
+
+
+        }
+
+        function ciklas() {
+            for (i = 0; i < masyvas.length; i++) {
+                var greitis = ((3600 / masyvas[i][3]) * masyvas[i][2]) / 1000;
+
+                document.querySelector("tbody").innerHTML += "<tr> <td>" + masyvas[i][0] + "</td> <td>" + masyvas[i][1] + "</td> <td>" + masyvas[i][2] + "</td> <td>" + masyvas[i][3] + "</td> <td>" + greitis.toFixed(2) + "</td></tr>";
+            }
+        }
+    </script>
+</body>
+
+</html>
