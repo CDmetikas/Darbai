@@ -1,0 +1,32 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  padding: 50px 50px 0 50px;
+  background-color: #c8cfdc;
+}
+
+body header {
+  background-color: #fff;
+  padding-bottom: 150px;
+}
+
+body header nav {
+  padding: 20px 29px 78px 20px;
+  color: #333333;
+}
+
+body header nav .leftSide {
+  float: left;
+}
+
+body header nav .rightSide {
+  float: right;
+}
+
+body header nav .clearFix {
+  clear: both;
+}
+
+body header nav li {
+  display: inline-block;
+}
+/*# sourceMappingURL=main.css.map */

@@ -20,6 +20,13 @@
         table {
             min-width: 800px;
         }
+        
+        table input {
+            width: 100%;
+            background-color: white;
+            color: black;
+            outline: none;
+        }
     </style>
 
 </head>
@@ -49,7 +56,7 @@
 
             </tbody>
         </table> <br>
-        <p id="didziausiareiksme" style="color:rgb(70, 70, 255); font-weight: bold;"></p>
+        <p id="didziausiareiksme" style="color:#0984e3; font-weight: bold;"></p>
     </div>
 
     <script type="text/javascript">
@@ -64,28 +71,28 @@
             if (data1 == "" || numeriai1 == "" || atstumas1 == "" || laikas1 == "") {
                 document.getElementById("alert").innerHTML = "Visi laukai turi būti užpildyti!";
                 if (data1 == "") {
-                    document.getElementById("alert").style.color = "red";
-                    document.getElementById("data").style.borderColor = "red";
+                    document.getElementById("alert").style.color = "#d63031";
+                    document.getElementById("data").style.borderColor = "#d63031";
                 } else {
-                    document.getElementById("data").style.borderColor = "green";
+                    document.getElementById("data").style.borderColor = "#00b894";
                 }
                 if (numeriai1 == "") {
-                    document.getElementById("alert").style.color = "red";
-                    document.getElementById("numeriai").style.borderColor = "red";
+                    document.getElementById("alert").style.color = "#d63031";
+                    document.getElementById("numeriai").style.borderColor = "#d63031";
                 } else {
-                    document.getElementById("numeriai").style.borderColor = "green";
+                    document.getElementById("numeriai").style.borderColor = "#00b894";
                 }
                 if (atstumas1 == "") {
-                    document.getElementById("alert").style.color = "red";
-                    document.getElementById("atstumas").style.borderColor = "red";
+                    document.getElementById("alert").style.color = "#d63031";
+                    document.getElementById("atstumas").style.borderColor = "#d63031";
                 } else {
-                    document.getElementById("atstumas").style.borderColor = "green";
+                    document.getElementById("atstumas").style.borderColor = "#00b894";
                 }
                 if (laikas1 == "") {
-                    document.getElementById("alert").style.color = "red";
-                    document.getElementById("laikas").style.borderColor = "red";
+                    document.getElementById("alert").style.color = "#d63031";
+                    document.getElementById("laikas").style.borderColor = "#d63031";
                 } else {
-                    document.getElementById("laikas").style.borderColor = "green";
+                    document.getElementById("laikas").style.borderColor = "#00b894";
                 }
 
             } else {
@@ -111,7 +118,17 @@
             for (i = 0; i < masyvas.length; i++) {
                 var greitis = ((3600 / masyvas[i][3]) * masyvas[i][2]) / 1000;
 
-                document.querySelector("tbody").innerHTML += "<tr id='e" + i + "'> <td>" + masyvas[i][0] + "</td> <td>" + masyvas[i][1] + "</td> <td>" + masyvas[i][2] + "</td> <td>" + masyvas[i][3] + "</td> <td id='g" + i + "'>" + greitis.toFixed(0) + "</td><td><button onclick='Trinti(" + i + ")'>Ištrinti</button></td><td><button onclick='redaguoti(" + i + ")'>Redaguoti</button></td></tr>";
+                document.querySelector("tbody").innerHTML +=
+                    "<tr id='eilute" + i + "'>" +
+                    "<td><input class='formaInput" + i + "' id='dataInput" + i + "' disabled type='text' value=" + masyvas[i][0] + ">  </td>" +
+                    "<td><input class='formaInput" + i + "' id='numeriaiInput" + i + "' disabled type='text' value=" + masyvas[i][1] + ">  </td>" +
+                    "<td><input class='formaInput" + i + "' id='atstumasInput" + i + "' disabled type='text' value=" + masyvas[i][2] + ">  </td>" +
+                    "<td><input class='formaInput" + i + "' id='laikasInput" + i + "' disabled type='text' value=" + masyvas[i][3] + ">  </td>" +
+                    "<td id='g" + i + "'>" + greitis.toFixed(0) + "</td>" +
+                    "<td><button id='trintiButton" + i + "'  onclick='Trinti(" + i + ")'>Ištrinti</button></td>" +
+                    "<td><button id='redaguotiButton" + i + "' onclick='redaguoti(" + i + ")'>Redaguoti</button></td>" +
+                    "<td><button id='saugotiButton" + i + "'disabled onclick='saugoti(" + i + ")'>Saugoti</button></td>" +
+                    "</tr>";
             }
             atstatoReiksmes();
             didziausias();
@@ -123,6 +140,41 @@
             ciklas();
         }
 
+        function redaguoti(i) {
+            var x = document.querySelectorAll(".formaInput" + i);
+            var a;
+            for (a = 0; a < x.length; a++) {
+                x[a].removeAttribute("disabled");
+                x[a].style.backgroundColor = "#00b894";
+                x[a].style.color = "#fff";
+
+            }
+
+            document.getElementById("saugotiButton" + i).removeAttribute("disabled");
+            document.getElementById("redaguotiButton" + i).disabled = true;
+            document.getElementById("trintiButton" + i).disabled = true;
+
+        }
+
+        function saugoti(i) {
+            var x = document.querySelectorAll(".formaInput" + i);
+            var a;
+            for (a = 0; a < x.length; a++) {
+                x[a].disabled = true;
+            }
+
+
+            document.getElementById("redaguotiButton" + i).removeAttribute("disabled");
+            document.getElementById("trintiButton" + i).removeAttribute("disabled");
+            document.getElementById("saugotiButton" + i).disabled = true;
+
+            masyvas[i][0] = document.getElementById("dataInput" + i).value;
+            masyvas[i][1] = document.getElementById("numeriaiInput" + i).value;
+            masyvas[i][2] = document.getElementById("atstumasInput" + i).value;
+            masyvas[i][3] = document.getElementById("laikasInput" + i).value;
+            document.querySelector("tbody").innerHTML = "";
+            ciklas();
+        }
 
         function atstatoReiksmes() {
             document.getElementById("numeriai").value = "";
@@ -155,8 +207,8 @@
             for (a = 0; a < max.length; a++) {
                 if (reiksme == document.getElementById("g" + a).innerHTML) {
                     i--;
-                    document.getElementById("e" + a).style.color = "rgb(70, 70, 255)";
-                    document.getElementById("e" + a).style.fontWeight = "bold";
+                    document.getElementById("eilute" + a).style.color = "#0984e3";
+                    document.getElementById("eilute" + a).style.fontWeight = "bold";
                     break;
                 }
             }
