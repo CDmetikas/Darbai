@@ -67,6 +67,7 @@
             top: calc(50% - 0.7em);
             left: calc(50% - 0.5em);
             font-size: 5vmin;
+            cursor: pointer;
         }
         
         .Bfigura {
@@ -75,26 +76,97 @@
         }
     </style>
     <script>
+        sachmatai = [
+                    [11, 12, 13, 14, 15, 16, 17, 18],
+                    [21, 22, 22, 24, 25, 26, 27, 28],
+                    [31, 32, 33, 34, 35, 36, 37, 38],
+                    [41, 42, 43, 44, 45, 46, 47, 48],
+                    [51, 52, 53, 54, 55, 56, 57, 58],
+                    [61, 62, 63, 64, 65, 66, 67, 68],
+                    [71, 72, 73, 74, 75, 76, 77, 78],
+                    [81, 82, 83, 84, 85, 86, 87, 88], 
+                ];
+
         function allowDrop(ev) {
-            ev.preventDefault();
+            pabaigosKoordinates = parseInt(ev.target.id);
+            var Jpestininkai = figurosID == "jpestininkas1" || figurosID == "jpestininkas2" || figurosID == "jpestininkas3" || figurosID == "jpestininkas4" || figurosID == "jpestininkas5" || figurosID == "jpestininkas6" || figurosID == "jpestininkas7" || figurosID == "jpestininkas8";
+            var Bpestininkai = figurosID == "bpestininkas1" || figurosID == "bpestininkas2" || figurosID == "bpestininkas3" || figurosID == "bpestininkas4" || figurosID == "bpestininkas5" || figurosID == "bpestininkas6" || figurosID == "bpestininkas7" || figurosID == "bpestininkas8";        
+            
+          
+
+
+            if (ev.target.hasChildNodes()) {
+                var parent = document.getElementById(pabaigosKoordinates);
+                var senas = document.getElementById(pabaigosKoordinates).firstElementChild;
+                var naujas = document.getElementById(figurosID);
+                var senasClass = document.getElementById(pabaigosKoordinates).firstElementChild.className;
+               
+                if((Jpestininkai && ev.target.hasChildNodes() && pabaigosKoordinates == pradziosKoordinates + 11 || pabaigosKoordinates == pradziosKoordinates + 9) && pabaigosKoordinates != pradziosKoordinates + 10){
+                  if (senasClass != "Jfigura"){
+                    ev.preventDefault();    
+                    if (senasClass == "Bfigura"){
+                        parent.replaceChild(naujas,senas);
+                    }
+                  }
+                    
+                }else if((Bpestininkai && ev.target.hasChildNodes() && pabaigosKoordinates == pradziosKoordinates - 11 || pabaigosKoordinates == pradziosKoordinates - 9) && pabaigosKoordinates != pradziosKoordinates - 10){
+                  if (senasClass != "Bfigura"){
+                    ev.preventDefault();
+                    if (senasClass == "Jfigura"){
+                        parent.replaceChild(naujas,senas);
+                    }
+                  }
+                }else {return;}
+            }
+
+            if(Jpestininkai){
+                if (pradziosKoordinates == 21 || pradziosKoordinates == 22 || pradziosKoordinates == 23 || pradziosKoordinates == 24 || pradziosKoordinates == 25 || pradziosKoordinates == 26 || pradziosKoordinates == 27 || pradziosKoordinates == 28){
+                    if (pabaigosKoordinates == pradziosKoordinates + 10 || pabaigosKoordinates == pradziosKoordinates + 20){
+                        ev.preventDefault();
+                    }            
+                }
+                if (pabaigosKoordinates == pradziosKoordinates + 10){
+                    ev.preventDefault();
+                }           
+            }
+
+            if(Bpestininkai){
+                if (pradziosKoordinates == 71 || pradziosKoordinates == 72 || pradziosKoordinates == 73 || pradziosKoordinates == 74 || pradziosKoordinates == 75 || pradziosKoordinates == 76 || pradziosKoordinates == 77 || pradziosKoordinates == 78){
+                    if (pabaigosKoordinates == pradziosKoordinates - 10 || pabaigosKoordinates == pradziosKoordinates - 20){
+                        ev.preventDefault();
+                    }  
+                }
+                if (pabaigosKoordinates == pradziosKoordinates - 10){
+                    ev.preventDefault();
+                }        
+            }      
+            document.getElementById("tekstas2").innerHTML = ev.target.id;
         }
 
         function drag(ev) {
+            pradziosKoordinates = parseInt(ev.target.parentNode.id);
+            figurosID = ev.target.id;
             ev.dataTransfer.setData("text", ev.target.id);
+                                  
+            document.getElementById("tekstas").innerHTML = ev.target.parentNode.id;
+            document.getElementById("tekstas3").innerHTML = ev.target.id;            
         }
 
         function drop(ev) {
             ev.preventDefault();
-            if (ev.target.hasChildNodes()) {
-                return;
-            }
+            
             var data = ev.dataTransfer.getData("text");
             ev.target.appendChild(document.getElementById(data));
         }
+
     </script>
 </head>
 
 <body>
+    <div id="tekstas">0</div>
+    <div id="tekstas2">0</div>
+    <div id="tekstas3">0</div>
+    <div id="tekstas4">0</div>
     <div class="container">
         <!-- --------------------------Remelis-------------------------- -->
         <div class="remelis1"></div>
@@ -109,162 +181,98 @@
         <div class="remelis1"></div>
         <!-- --------------------------Eilute1-------------------------- -->
         <div class="remelis"><span>1</span></div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jbokstas">&#9820;</div>
-        </div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jarklys">&#9822;</div>
-        </div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jrikis">&#9821;</div>
-        </div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jaralius">&#9819;</div>
-        </div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jaraliene">&#9818;</div>
-        </div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jrikis">&#9821;</div>
-        </div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jarklys">&#9822;</div>
-        </div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jbokstas">&#9820;</div>
-        </div>
+        <div class="lenta1" id="11" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jkbokstas">&#9820;</div></div>
+        <div class="lenta1" id="12" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jkarklys">&#9822;</div></div>
+        <div class="lenta1" id="13" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jkrikis">&#9821;</div></div>
+        <div class="lenta1" id="14" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jaralius">&#9819;</div></div>
+        <div class="lenta1" id="15" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jaraliene">&#9818;</div></div>
+        <div class="lenta1" id="16" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jdrikis">&#9821;</div></div>
+        <div class="lenta1" id="17" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jdarklys">&#9822;</div></div>
+        <div class="lenta1" id="18" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jdbokstas">&#9820;</div></div>
         <div class="remelis1"><span>1</span></div>
 
         <!-- --------------------------Eilute2-------------------------- -->
         <div class="remelis"><span>2</span></div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jpestininkas">&#9823;</div>
-        </div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jpestininkas">&#9823;</div>
-        </div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jpestininkas">&#9823;</div>
-        </div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jpestininkas">&#9823;</div>
-        </div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jpestininkas">&#9823;</div>
-        </div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jpestininkas">&#9823;</div>
-        </div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jpestininkas">&#9823;</div>
-        </div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jpestininkas">&#9823;</div>
-        </div>
+        <div class="lenta" id="21" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jpestininkas1">&#9823;</div></div>
+        <div class="lenta" id="22" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jpestininkas2">&#9823;</div></div>
+        <div class="lenta" id="23" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jpestininkas3">&#9823;</div></div>
+        <div class="lenta" id="24" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jpestininkas4">&#9823;</div></div>
+        <div class="lenta" id="25" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jpestininkas5">&#9823;</div></div>
+        <div class="lenta" id="26" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jpestininkas6">&#9823;</div></div>
+        <div class="lenta" id="27" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jpestininkas7">&#9823;</div></div>
+        <div class="lenta" id="28" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jpestininkas8">&#9823;</div></div>
         <div class="remelis1"><span>2</span></div>
 
         <!-- --------------------------Eilute3-------------------------- -->
         <div class="remelis"><span>3</span></div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta1" id="31" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta1" id="32" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta1" id="33" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta1" id="34" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta1" id="35" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta1" id="36" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta1" id="37" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta1" id="38" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
         <div class="remelis1"><span>3</span></div>
 
         <!-- --------------------------Eilute4-------------------------- -->
         <div class="remelis"><span>4</span></div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta" id="41" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta" id="42" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta" id="43" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta" id="44" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta" id="45" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta" id="46" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta" id="47" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta" id="48" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
         <div class="remelis1"><span>4</span></div>
 
         <!-- --------------------------Eilute5-------------------------- -->
         <div class="remelis"><span>5</span></div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta1" id="51" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta1" id="52" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta1" id="53" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta1" id="54" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta1" id="55" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta1" id="56" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta1" id="57" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta1" id="58" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
         <div class="remelis1"><span>5</span></div>
 
         <!-- --------------------------Eilute6-------------------------- -->
         <div class="remelis"><span>6</span></div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta" id="61" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta" id="62" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta" id="63" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta" id="64" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta" id="65" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta" id="66" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta" id="67" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="lenta" id="68" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
         <div class="remelis1"><span>6</span></div>
 
         <!-- --------------------------Eilute7-------------------------- -->
         <div class="remelis"><span>7</span></div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bpestininkas">&#9823;</div>
-        </div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bpestininkas">&#9823;</div>
-        </div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bpestininkas">&#9823;</div>
-        </div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bpestininkas">&#9823;</div>
-        </div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bpestininkas">&#9823;</div>
-        </div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bpestininkas">&#9823;</div>
-        </div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bpestininkas">&#9823;</div>
-        </div>
-        <div class="lenta1" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bpestininkas">&#9823;</div>
-        </div>
+        <div class="lenta1" id="71" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bpestininkas1">&#9823;</div></div>
+        <div class="lenta1" id="72" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bpestininkas2">&#9823;</div></div>
+        <div class="lenta1" id="73" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bpestininkas3">&#9823;</div></div>
+        <div class="lenta1" id="74" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bpestininkas4">&#9823;</div></div>
+        <div class="lenta1" id="75" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bpestininkas5">&#9823;</div></div>
+        <div class="lenta1" id="76" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bpestininkas6">&#9823;</div></div>
+        <div class="lenta1" id="77" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bpestininkas7">&#9823;</div></div>
+        <div class="lenta1" id="78" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bpestininkas8">&#9823;</div></div>
         <div class="remelis1"><span>7</span></div>
 
         <!-- --------------------------Eilute8-------------------------- -->
         <div class="remelis"><span>8</span></div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bbokstas">&#9820;</div>
-        </div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Bfigura" draggable="true" ondragstart="drag(event)" id="barklys">&#9822;</div>
-        </div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Bfigura" draggable="true" ondragstart="drag(event)" id="brikis">&#9821;</div>
-        </div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Bfigura" draggable="true" ondragstart="drag(event)" id="baralius">&#9819;</div>
-        </div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Bfigura" draggable="true" ondragstart="drag(event)" id="baraliene">&#9818;</div>
-        </div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Bfigura" draggable="true" ondragstart="drag(event)" id="brikis">&#9821;</div>
-        </div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Bfigura" draggable="true" ondragstart="drag(event)" id="barklys">&#9822;</div>
-        </div>
-        <div class="lenta" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bbokstas">&#9820;</div>
-        </div>
+        <div class="lenta" id="81" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bkbokstas">&#9820;</div></div>
+        <div class="lenta" id="82" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bkarklys">&#9822;</div></div>
+        <div class="lenta" id="83" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bkrikis">&#9821;</div></div>
+        <div class="lenta" id="84" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Bfigura" draggable="true" ondragstart="drag(event)" id="baralius">&#9819;</div></div>
+        <div class="lenta" id="85" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Bfigura" draggable="true" ondragstart="drag(event)" id="baraliene">&#9818;</div></div>
+        <div class="lenta" id="86" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bdrikis">&#9821;</div></div>
+        <div class="lenta" id="87" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bdarklys">&#9822;</div></div>
+        <div class="lenta" id="88" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bdbokstas">&#9820;</div></div>
         <div class="remelis1"><span>8</span></div>
 
         <!-- --------------------------Remelis-------------------------- -->
@@ -279,27 +287,6 @@
         <div class="remelis"><span>A</span></div>
         <div class="remelis1"></div>
     </div>
-
-    <script>
-        sachmatai = [
-            [0, 0, 0, 0, 0, 0, 0, 0], //0
-            [0, 0, 0, 0, 0, 0, 0, 0], //1
-            [0, 0, 0, 0, 0, 0, 0, 0], //2
-            [0, 0, 0, 0, 0, 0, 0, 0], //3
-            [0, 0, 0, 0, 0, 0, 0, 0], //4
-            [0, 0, 0, 0, 0, 0, 0, 0], //5
-            [1, 0, 0, 0, 0, 0, 0, 0], //6
-            [0, 0, 0, 0, 0, 0, 0, 0], //7 
-            //   0  1  2  3  4  5  6  7     
-        ];
-
-        sachmatai[6][1];
-    </script>
-
-
-
-
-
 </body>
 
 </html>
