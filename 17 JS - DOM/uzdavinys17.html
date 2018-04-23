@@ -43,11 +43,11 @@
 
        
         function myFunction() {
-
+           
             document.getElementById("myDIV").style.animationDuration = "1s";
 
             if (localStorage.clickcount) {
-            localStorage.clickcount = Number(localStorage.clickcount)+1;
+                localStorage.clickcount = Number(localStorage.clickcount)+1;
             } else {
                 localStorage.clickcount = 1;
             }
@@ -62,9 +62,6 @@
                 document.getElementById("myDIV").classList.remove("mystyle2");
                 }
             }
-
-          
-            
         }
 
         document.onload = onLoad(localStorage.clickcount);
@@ -73,11 +70,11 @@
             if (x%2 != 0){
             document.getElementById("myDIV").classList.add("mystyle2");
             document.getElementById("myDIV").style.animationDuration = "0s";
-               
+
             }else{
                 document.getElementById("myDIV").classList.remove("mystyle2");
                 document.getElementById("myDIV").style.animationDuration = "0s";
-                }
+            }
         }
     
 
