@@ -1,0 +1,87 @@
+<!doctype html>
+
+<html>
+
+<head>
+<title> This is the title </title>
+<meta charset="UTF-8">
+<style>
+    .mystyle1{
+        width: 300px;
+        height: 300px;
+        background-color: #ff4040;
+        animation-name: animacija;
+        animation-duration: 1s;
+    }
+   
+    .mystyle2 {
+    border-radius: 50%;
+    background-color: #00b894;
+    animation-name: animacija2;
+    animation-duration: 1s;
+    }
+
+    @keyframes animacija {
+    from {background-color: #00b894; border-radius: 50%;}
+    to {background-color: #ff4040; border-radius: 0%;}
+}
+
+    @keyframes animacija2 {
+    from {background-color: #ff4040; border-radius: 0;}
+    to {background-color: #00b894; border-radius: 50%;}
+}
+
+</style>
+
+</head>
+
+<body>
+    <div id="myDIV" class="mystyle1" onclick="myFunction()"></div>
+    
+
+    <script>
+
+       
+        function myFunction() {
+
+            document.getElementById("myDIV").style.animationDuration = "1s";
+
+            if (localStorage.clickcount) {
+            localStorage.clickcount = Number(localStorage.clickcount)+1;
+            } else {
+                localStorage.clickcount = 1;
+            }
+
+            isEven(localStorage.clickcount);
+
+            function isEven(x) {
+            if (x%2 != 0){   
+                document.getElementById("myDIV").classList.add("mystyle2");
+               
+            }else{
+                document.getElementById("myDIV").classList.remove("mystyle2");
+                }
+            }
+
+          
+            
+        }
+
+        document.onload = onLoad(localStorage.clickcount);
+
+        function onLoad(x){
+            if (x%2 != 0){
+            document.getElementById("myDIV").classList.add("mystyle2");
+            document.getElementById("myDIV").style.animationDuration = "0s";
+               
+            }else{
+                document.getElementById("myDIV").classList.remove("mystyle2");
+                document.getElementById("myDIV").style.animationDuration = "0s";
+                }
+        }
+    
+
+    </script>
+</body>
+
+</html>

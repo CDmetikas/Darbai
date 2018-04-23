@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title> ^achmatų lenta </title>
+    <title> Š   achmatų lenta </title>
     <meta charset="UTF-8">
     <style>
         /* --------------------------pagrindas-------------------------- */
@@ -78,7 +78,7 @@
     <script>
         sachmatai = [
                     [11, 12, 13, 14, 15, 16, 17, 18],
-                    [21, 22, 22, 24, 25, 26, 27, 28],
+                    [21, 22, 23, 24, 25, 26, 27, 28],
                     [31, 32, 33, 34, 35, 36, 37, 38],
                     [41, 42, 43, 44, 45, 46, 47, 48],
                     [51, 52, 53, 54, 55, 56, 57, 58],
@@ -88,11 +88,48 @@
                 ];
 
         function allowDrop(ev) {
+            
+
             pabaigosKoordinates = parseInt(ev.target.id);
             var Jpestininkai = figurosID == "jpestininkas1" || figurosID == "jpestininkas2" || figurosID == "jpestininkas3" || figurosID == "jpestininkas4" || figurosID == "jpestininkas5" || figurosID == "jpestininkas6" || figurosID == "jpestininkas7" || figurosID == "jpestininkas8";
             var Bpestininkai = figurosID == "bpestininkas1" || figurosID == "bpestininkas2" || figurosID == "bpestininkas3" || figurosID == "bpestininkas4" || figurosID == "bpestininkas5" || figurosID == "bpestininkas6" || figurosID == "bpestininkas7" || figurosID == "bpestininkas8";        
-            
-          
+            var Jbokstai = figurosID == "jkbokstas" || figurosID == "jdbokstas";
+            var Bbokstai = figurosID == "bkbokstas" || figurosID == "bdbokstas";
+            var Jarkliai = figurosID == "jkarklys" || figurosID == "jdarklys";
+            var Barkliai = figurosID == "bkarklys" || figurosID == "bdarklys";
+            var Jrikiai = figurosID == "jkrikis" || figurosID == "jdrikis";
+            var Brikiai = figurosID == "bkrikis" || figurosID == "bdrikis";
+            var Jkaraliene = figurosID == "jkaraliene";
+            var Bkaraliene = figurosID == "bkaraliene";
+            var bokstaiKoordinates = naujosKoordinates(10) || naujosKoordinates(20) || naujosKoordinates(30) || naujosKoordinates(40) || naujosKoordinates(50) || 
+                                     naujosKoordinates(60) || naujosKoordinates(70) || naujosKoordinates(-10) || naujosKoordinates(-20) || naujosKoordinates(-30) || 
+                                     naujosKoordinates(-40) || naujosKoordinates(-50) || naujosKoordinates(-60) || naujosKoordinates(-70) || naujosKoordinates(1) || 
+                                     naujosKoordinates(2) || naujosKoordinates(3) || naujosKoordinates(4) || naujosKoordinates(5) || naujosKoordinates(6) || 
+                                     naujosKoordinates(7) || naujosKoordinates(-1) || naujosKoordinates(-2) || naujosKoordinates(-3) || naujosKoordinates(-4) || 
+                                     naujosKoordinates(-5) || naujosKoordinates(-6) || naujosKoordinates(-7);
+
+            var arkliaiKoordinates = naujosKoordinates(-19) || naujosKoordinates(-8) || naujosKoordinates(12) || naujosKoordinates(21) || naujosKoordinates(19) || 
+                                     naujosKoordinates(8) || naujosKoordinates(-12) || naujosKoordinates(-21);
+
+            var rikiaiKoordinates = naujosKoordinates(11) || naujosKoordinates(22) || naujosKoordinates(33) || naujosKoordinates(44) || naujosKoordinates(55) || 
+                                    naujosKoordinates(66) || naujosKoordinates(77) || naujosKoordinates(-11) || naujosKoordinates(-22) || naujosKoordinates(-33) || 
+                                    naujosKoordinates(-44) || naujosKoordinates(-55) || naujosKoordinates(-66) || naujosKoordinates(-77) || naujosKoordinates(9) || 
+                                    naujosKoordinates(18) || naujosKoordinates(27) || naujosKoordinates(36) || naujosKoordinates(45) || naujosKoordinates(54) || 
+                                    naujosKoordinates(63) || naujosKoordinates(-9) || naujosKoordinates(-18) || naujosKoordinates(-27) || naujosKoordinates(-36) || 
+                                    naujosKoordinates(-45) || naujosKoordinates(-54) || naujosKoordinates(-63);         
+
+            var karalieneKoordinates = naujosKoordinates(10) || naujosKoordinates(20) || naujosKoordinates(30) || naujosKoordinates(40) || naujosKoordinates(50) || 
+                                     naujosKoordinates(60) || naujosKoordinates(70) || naujosKoordinates(-10) || naujosKoordinates(-20) || naujosKoordinates(-30) || 
+                                     naujosKoordinates(-40) || naujosKoordinates(-50) || naujosKoordinates(-60) || naujosKoordinates(-70) || naujosKoordinates(1) || 
+                                     naujosKoordinates(2) || naujosKoordinates(3) || naujosKoordinates(4) || naujosKoordinates(5) || naujosKoordinates(6) || 
+                                     naujosKoordinates(7) || naujosKoordinates(-1) || naujosKoordinates(-2) || naujosKoordinates(-3) || naujosKoordinates(-4) || 
+                                     naujosKoordinates(-5) || naujosKoordinates(-6) || naujosKoordinates(-7) || naujosKoordinates(11) || naujosKoordinates(22) || 
+                                     naujosKoordinates(33) || naujosKoordinates(44) || naujosKoordinates(55) || naujosKoordinates(66) || naujosKoordinates(77) || 
+                                     naujosKoordinates(-11) || naujosKoordinates(-22) || naujosKoordinates(-33) || naujosKoordinates(-44) || naujosKoordinates(-55) || 
+                                     naujosKoordinates(-66) || naujosKoordinates(-77) || naujosKoordinates(9) || naujosKoordinates(18) || naujosKoordinates(27) || 
+                                     naujosKoordinates(36) || naujosKoordinates(45) || naujosKoordinates(54) || naujosKoordinates(63) || naujosKoordinates(-9) || 
+                                     naujosKoordinates(-18) || naujosKoordinates(-27) || naujosKoordinates(-36) || naujosKoordinates(-45) || naujosKoordinates(-54) || 
+                                     naujosKoordinates(-63); 
 
 
             if (ev.target.hasChildNodes()) {
@@ -101,45 +138,139 @@
                 var naujas = document.getElementById(figurosID);
                 var senasClass = document.getElementById(pabaigosKoordinates).firstElementChild.className;
                
-                if((Jpestininkai && ev.target.hasChildNodes() && pabaigosKoordinates == pradziosKoordinates + 11 || pabaigosKoordinates == pradziosKoordinates + 9) && pabaigosKoordinates != pradziosKoordinates + 10){
-                  if (senasClass != "Jfigura"){
-                    ev.preventDefault();    
-                    if (senasClass == "Bfigura"){
-                        parent.replaceChild(naujas,senas);
+                if((Jpestininkai && ev.target.hasChildNodes() && naujosKoordinates(11) || naujosKoordinates(9)) && pabaigosKoordinates != pradziosKoordinates + 10){
+                    if (senasClass != "Jfigura"){
+                        ev.preventDefault();   
+                        
+                        if (senasClass == "Bfigura"){
+                            parent.replaceChild(naujas,senas);
+                        }
                     }
-                  }
                     
-                }else if((Bpestininkai && ev.target.hasChildNodes() && pabaigosKoordinates == pradziosKoordinates - 11 || pabaigosKoordinates == pradziosKoordinates - 9) && pabaigosKoordinates != pradziosKoordinates - 10){
-                  if (senasClass != "Bfigura"){
-                    ev.preventDefault();
-                    if (senasClass == "Jfigura"){
-                        parent.replaceChild(naujas,senas);
+                }else if((Bpestininkai && ev.target.hasChildNodes() && naujosKoordinates(-11) || naujosKoordinates(-9)) && pabaigosKoordinates != pradziosKoordinates - 10){
+                    if (senasClass != "Bfigura"){
+                        ev.preventDefault();
+                        if (senasClass == "Jfigura"){
+                            parent.replaceChild(naujas,senas);
+                        }
                     }
-                  }
-                }else {return;}
+                }else if (Jbokstai && bokstaiKoordinates ){
+                    if (senasClass != "Jfigura"){
+                        ev.preventDefault();    
+                        
+                        if (senasClass == "Bfigura"){
+                            parent.replaceChild(naujas,senas);
+                        }   
+                    }   
+                }else if (Bbokstai && bokstaiKoordinates){
+                    if (senasClass != "Bfigura"){
+                        ev.preventDefault();    
+                        if (senasClass == "Jfigura"){
+                            parent.replaceChild(naujas,senas);
+                        }   
+                    }
+                }else if (Jarkliai && arkliaiKoordinates){
+                    if (senasClass != "Jfigura"){
+                        ev.preventDefault();    
+                        if (senasClass == "Bfigura"){
+                            parent.replaceChild(naujas,senas);
+                        }   
+                    }
+                }else if (Barkliai && arkliaiKoordinates){
+                    if (senasClass != "Bfigura"){
+                        ev.preventDefault();    
+                        if (senasClass == "Jfigura"){
+                            parent.replaceChild(naujas,senas);
+                        }   
+                    }
+                }else if (Jrikiai && rikiaiKoordinates){
+                    if (senasClass != "Jfigura"){
+                        ev.preventDefault();    
+                        if (senasClass == "Bfigura"){
+                            parent.replaceChild(naujas,senas);
+                        }   
+                    }
+                }else if (Brikiai && rikiaiKoordinates){
+                    if (senasClass != "Bfigura"){
+                        ev.preventDefault();    
+                        if (senasClass == "Jfigura"){
+                            parent.replaceChild(naujas,senas);
+                        }   
+                    }
+                }else if (Jkaraliene && karalieneKoordinates){
+                    if (senasClass != "Jfigura"){
+                        ev.preventDefault();    
+                        if (senasClass == "Bfigura"){
+                            parent.replaceChild(naujas,senas);
+                        }   
+                    }
+                }else if (Bkaraliene && karalieneKoordinates){
+                    if (senasClass != "Bfigura"){
+                        ev.preventDefault();    
+                        if (senasClass == "Jfigura"){
+                            parent.replaceChild(naujas,senas);
+                        }   
+                    }
+                }
+                
+                else {return;}
             }
 
             if(Jpestininkai){
                 if (pradziosKoordinates == 21 || pradziosKoordinates == 22 || pradziosKoordinates == 23 || pradziosKoordinates == 24 || pradziosKoordinates == 25 || pradziosKoordinates == 26 || pradziosKoordinates == 27 || pradziosKoordinates == 28){
-                    if (pabaigosKoordinates == pradziosKoordinates + 10 || pabaigosKoordinates == pradziosKoordinates + 20){
+                    if (naujosKoordinates(10) || naujosKoordinates(20)) {
                         ev.preventDefault();
                     }            
                 }
-                if (pabaigosKoordinates == pradziosKoordinates + 10){
+                if (naujosKoordinates(10)){
                     ev.preventDefault();
                 }           
             }
 
             if(Bpestininkai){
                 if (pradziosKoordinates == 71 || pradziosKoordinates == 72 || pradziosKoordinates == 73 || pradziosKoordinates == 74 || pradziosKoordinates == 75 || pradziosKoordinates == 76 || pradziosKoordinates == 77 || pradziosKoordinates == 78){
-                    if (pabaigosKoordinates == pradziosKoordinates - 10 || pabaigosKoordinates == pradziosKoordinates - 20){
+                    if (naujosKoordinates(-10) || naujosKoordinates(-20)){
                         ev.preventDefault();
                     }  
                 }
-                if (pabaigosKoordinates == pradziosKoordinates - 10){
+                if (naujosKoordinates(-10)){
                     ev.preventDefault();
                 }        
-            }      
+            }     
+
+            if(Jbokstai || Bbokstai){
+                if (bokstaiKoordinates)
+                    {
+                        ev.preventDefault();
+                    } 
+            }
+
+            if(Jarkliai || Barkliai){
+                if (arkliaiKoordinates)
+                    {
+                        ev.preventDefault();
+                    } 
+            }
+
+            if(Jrikiai || Brikiai){
+                if (rikiaiKoordinates)
+                    {
+                        ev.preventDefault();
+                    } 
+            }
+
+            if(Jkaraliene || Bkaraliene){
+                if (karalieneKoordinates)
+                    {
+                        ev.preventDefault();
+                    } 
+            }
+
+            function naujosKoordinates(x){
+                return pabaigosKoordinates == pradziosKoordinates + x;
+            }
+
+
             document.getElementById("tekstas2").innerHTML = ev.target.id;
         }
 
@@ -184,8 +315,8 @@
         <div class="lenta1" id="11" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jkbokstas">&#9820;</div></div>
         <div class="lenta1" id="12" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jkarklys">&#9822;</div></div>
         <div class="lenta1" id="13" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jkrikis">&#9821;</div></div>
-        <div class="lenta1" id="14" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jaralius">&#9819;</div></div>
-        <div class="lenta1" id="15" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jaraliene">&#9818;</div></div>
+        <div class="lenta1" id="14" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jkaralius">&#9819;</div></div>
+        <div class="lenta1" id="15" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jkaraliene">&#9818;</div></div>
         <div class="lenta1" id="16" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jdrikis">&#9821;</div></div>
         <div class="lenta1" id="17" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jdarklys">&#9822;</div></div>
         <div class="lenta1" id="18" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Jfigura" draggable="true" ondragstart="drag(event)" id="jdbokstas">&#9820;</div></div>
@@ -268,8 +399,8 @@
         <div class="lenta" id="81" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bkbokstas">&#9820;</div></div>
         <div class="lenta" id="82" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bkarklys">&#9822;</div></div>
         <div class="lenta" id="83" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bkrikis">&#9821;</div></div>
-        <div class="lenta" id="84" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Bfigura" draggable="true" ondragstart="drag(event)" id="baralius">&#9819;</div></div>
-        <div class="lenta" id="85" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Bfigura" draggable="true" ondragstart="drag(event)" id="baraliene">&#9818;</div></div>
+        <div class="lenta" id="84" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bkaralius">&#9819;</div></div>
+        <div class="lenta" id="85" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bkaraliene">&#9818;</div></div>
         <div class="lenta" id="86" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bdrikis">&#9821;</div></div>
         <div class="lenta" id="87" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bdarklys">&#9822;</div></div>
         <div class="lenta" id="88" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="Bfigura" draggable="true" ondragstart="drag(event)" id="bdbokstas">&#9820;</div></div>
