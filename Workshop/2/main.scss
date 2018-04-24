@@ -2,23 +2,78 @@ body {
     font-family: 'Roboto', sans-serif;
     padding: 50px 50px 0 50px;
     background-color: #c8cfdc;
+    img {
+        max-width: 100%;
+    }
     header {
         background-color: #fff;
         padding-bottom: 150px;
         nav {
             padding: 20px 29px 78px 20px;
             color: #333333;
+            li {
+                color: #333333;
+                text-transform: uppercase;
+                cursor: pointer;
+            }
             .leftSide {
                 float: left;
+                li, img {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+                
+                li:not(:last-of-type){
+                    margin-right: 42px;
+                }
+                img {
+                    margin-right: 30px;
+                }
             }
             .rightSide {
                 float: right;
+                line-height: 50px;
+                li:not(:last-of-type){
+                    margin-right: 30px;
+                }   
+                li, li * {
+                    display: inline-block;
+                    vertical-align: middle;
+                    img {
+                        margin-right: 10px;
+                    }
+                    img.cart {
+                        margin-top: -4px;
+                    }
+                    
+                    span {
+                        color:#0089cf;
+                        vertical-align: top;
+                    }
+                }
             }
             .clearFix {
                 clear: both;
             }
-            li {
+            
+        }
+        .topWrapper{
+            width: 78%;
+            margin: auto;
+            font-size: 0px;
+            .shoes{
+                padding-right: 100px;
+                box-sizing: border-box;
+                width: 74%;
                 display: inline-block;
+                vertical-align: bottom;
+
+            }
+
+            .rightSide{
+                display: inline-block;
+                vertical-align: bottom;
+                width: 26%;
             }
         }
     }

@@ -1,0 +1,69 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <title> This is the title </title>
+    <meta charset="UTF-8">
+    <style>
+        #loader {
+            border: 6px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 6px solid #3498db;
+            width: 20px;
+            height: 20px;
+            animation: spin 2s linear infinite;
+            display: none;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <script>
+        function submit() {
+            pirmasPSW = document.getElementById("pirmas").value;
+            antrasPSW = document.getElementById("antras").value;
+            var arGeras = new Psw(pirmasPSW, antrasPSW);
+            arGeras.teisingas();
+        }
+
+        function Psw(pirmas, antras) {
+            this.pirmas = pirmas;
+            this.antras = antras;
+            this.teisingas = function() {
+                if (this.pirmas == "" || this.antras == "") {
+                    document.querySelector("p").innerHTML = "Užpildykite visus laukus";
+                    document.querySelector("p").style.color = "red";
+                } else {
+                    if (this.pirmas == this.antras) {
+                        document.querySelector("p").innerHTML = "Slaptažodis keičiamas...";
+                        document.querySelector("p").style.color = "green";
+                        document.getElementById("mygtukas").style.display = "none";
+                        document.getElementById("loader").style.display = "block";
+                    } else {
+                        document.querySelector("p").innerHTML = "‘Slaptažodžiai nesutampa - pakartokite dar kartą’.";
+                        document.querySelector("p").style.color = "red";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <p>Įveskite naują slaptažodį</p>
+    <input type="password" id="pirmas"> <br> <br>
+    <input type="password" id="antras"> <br> <br>
+    <input type="submit" value="Keisti" id="mygtukas" onclick="submit()">
+    <div id="loader"></div>
+
+</body>
+
+</html>

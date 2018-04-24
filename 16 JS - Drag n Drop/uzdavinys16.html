@@ -137,11 +137,12 @@
                 var senas = document.getElementById(pabaigosKoordinates).firstElementChild;
                 var naujas = document.getElementById(figurosID);
                 var senasClass = document.getElementById(pabaigosKoordinates).firstElementChild.className;
+
+                document.getElementById("tekstas4").innerHTML = senasClass;
                
                 if((Jpestininkai && ev.target.hasChildNodes() && naujosKoordinates(11) || naujosKoordinates(9)) && pabaigosKoordinates != pradziosKoordinates + 10){
-                    if (senasClass != "Jfigura"){
+                    if (senasClass == "Jfigura"){
                         ev.preventDefault();   
-                        
                         if (senasClass == "Bfigura"){
                             parent.replaceChild(naujas,senas);
                         }
@@ -157,10 +158,9 @@
                 }else if (Jbokstai && bokstaiKoordinates ){
                     if (senasClass != "Jfigura"){
                         ev.preventDefault();    
-                        
                         if (senasClass == "Bfigura"){
                             parent.replaceChild(naujas,senas);
-                        }   
+                        }  
                     }   
                 }else if (Bbokstai && bokstaiKoordinates){
                     if (senasClass != "Bfigura"){
@@ -214,6 +214,8 @@
                 }
                 
                 else {return;}
+
+                
             }
 
             if(Jpestininkai){

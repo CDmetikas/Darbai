@@ -4,6 +4,10 @@ body {
   background-color: #c8cfdc;
 }
 
+body img {
+  max-width: 100%;
+}
+
 body header {
   background-color: #fff;
   padding-bottom: 150px;
@@ -14,19 +18,77 @@ body header nav {
   color: #333333;
 }
 
+body header nav li {
+  color: #333333;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
 body header nav .leftSide {
   float: left;
 }
 
+body header nav .leftSide li, body header nav .leftSide img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+body header nav .leftSide li:not(:last-of-type) {
+  margin-right: 42px;
+}
+
+body header nav .leftSide img {
+  margin-right: 30px;
+}
+
 body header nav .rightSide {
   float: right;
+  line-height: 50px;
+}
+
+body header nav .rightSide li:not(:last-of-type) {
+  margin-right: 30px;
+}
+
+body header nav .rightSide li, body header nav .rightSide li * {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+body header nav .rightSide li img, body header nav .rightSide li * img {
+  margin-right: 10px;
+}
+
+body header nav .rightSide li img.cart, body header nav .rightSide li * img.cart {
+  margin-top: -4px;
+}
+
+body header nav .rightSide li span, body header nav .rightSide li * span {
+  color: #0089cf;
+  vertical-align: top;
 }
 
 body header nav .clearFix {
   clear: both;
 }
 
-body header nav li {
+body header .topWrapper {
+  width: 78%;
+  margin: auto;
+  font-size: 0px;
+}
+
+body header .topWrapper .shoes {
+  padding-right: 100px;
+  box-sizing: border-box;
+  width: 74%;
   display: inline-block;
+  vertical-align: bottom;
+}
+
+body header .topWrapper .rightSide {
+  display: inline-block;
+  vertical-align: bottom;
+  width: 26%;
 }
 /*# sourceMappingURL=main.css.map */
