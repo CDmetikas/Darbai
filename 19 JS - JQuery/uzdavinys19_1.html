@@ -1,0 +1,98 @@
+<!doctype html>
+
+<html>
+
+<head>
+<title> This is the title </title>
+<meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style>
+    div{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+    .roundR{
+        background-color: #e74c3c;
+    }
+    .roundG{
+        background-color: #27ae60;
+    }
+    .roundB{
+        background-color: #2980b9;
+    }
+</style>
+<script>
+
+$(document).ready(function(){
+
+$("a").hover(function(){
+    
+    $("p").toggle();
+
+});
+
+
+
+    
+
+$(".roundR").on({
+
+
+
+    click: function(){
+        $(".roundG").hide(2000);
+        $(".roundB").hide(2000);
+    },
+
+    dblclick: function(){
+        $(".roundG").show(2000);
+        $(".roundB").show(2000);
+    }
+});
+
+$(".roundG").on({
+    click: function(){
+        $(".roundR").hide(2000);
+        $(".roundB").hide(2000);
+    },
+
+    dblclick: function(){
+        $(".roundR").show(2000);
+        $(".roundB").show(2000);
+    }
+});
+
+$(".roundB").on({
+    click: function(){
+        $(".roundG").hide(2000);
+        $(".roundR").hide(2000);
+    },
+
+    dblclick: function(){
+        $(".roundG").show(2000);
+        $(".roundR").show(2000);
+    }
+});
+
+
+
+
+});
+
+</script>
+
+</head>
+
+<body>
+        <a href="">slėpti</a>   
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quidem sint porro eos facilis ullam quaerat odio quisquam nostrum fuga itaque, illum aperiam, ea dolorem aut. Culpa eos optio saepe.</p>
+        
+        <div id="container">
+                <div class="roundR"><span></span></div>
+                <div class="roundG"><span></span></div>
+                <div class="roundB"><span></span></div>
+        </div>
+</body>
+
+</html>

@@ -18,12 +18,12 @@ body {
             }
             .leftSide {
                 float: left;
-                li, img {
+                li,
+                img {
                     display: inline-block;
                     vertical-align: middle;
                 }
-                
-                li:not(:last-of-type){
+                li:not(:last-of-type) {
                     margin-right: 42px;
                 }
                 img {
@@ -33,10 +33,11 @@ body {
             .rightSide {
                 float: right;
                 line-height: 50px;
-                li:not(:last-of-type){
+                li:not(:last-of-type) {
                     margin-right: 30px;
-                }   
-                li, li * {
+                }
+                li,
+                li * {
                     display: inline-block;
                     vertical-align: middle;
                     img {
@@ -45,9 +46,8 @@ body {
                     img.cart {
                         margin-top: -4px;
                     }
-                    
                     span {
-                        color:#0089cf;
+                        color: #0089cf;
                         vertical-align: top;
                     }
                 }
@@ -55,25 +55,48 @@ body {
             .clearFix {
                 clear: both;
             }
-            
         }
-        .topWrapper{
+        .topWrapper {
             width: 78%;
             margin: auto;
             font-size: 0px;
-            .shoes{
+            .shoes {
                 padding-right: 100px;
                 box-sizing: border-box;
                 width: 74%;
                 display: inline-block;
                 vertical-align: bottom;
-
             }
-
-            .rightSide{
+            .rightSide {
                 display: inline-block;
                 vertical-align: bottom;
                 width: 26%;
+            }
+            h3 {
+                color: #333333;
+                font-size: 25px;
+                font-weight: 600;
+                margin-bottom: 17px;
+            }
+            h2 {
+                color: #333333;
+                font-size: 35px;
+                font-weight: 600;
+                margin-bottom: 15px;
+            }
+            .heart {
+                border: #e4e4e4 1px solid;
+                width: 48px;
+                height: 48px;
+                line-height: 48px;
+                position: relative;
+                margin-bottom: 17px;
+                img {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translateY(-50%) translateX(-50%);
+                }
             }
         }
     }

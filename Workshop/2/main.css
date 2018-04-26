@@ -28,7 +28,8 @@ body header nav .leftSide {
   float: left;
 }
 
-body header nav .leftSide li, body header nav .leftSide img {
+body header nav .leftSide li,
+body header nav .leftSide img {
   display: inline-block;
   vertical-align: middle;
 }
@@ -50,20 +51,24 @@ body header nav .rightSide li:not(:last-of-type) {
   margin-right: 30px;
 }
 
-body header nav .rightSide li, body header nav .rightSide li * {
+body header nav .rightSide li,
+body header nav .rightSide li * {
   display: inline-block;
   vertical-align: middle;
 }
 
-body header nav .rightSide li img, body header nav .rightSide li * img {
+body header nav .rightSide li img,
+body header nav .rightSide li * img {
   margin-right: 10px;
 }
 
-body header nav .rightSide li img.cart, body header nav .rightSide li * img.cart {
+body header nav .rightSide li img.cart,
+body header nav .rightSide li * img.cart {
   margin-top: -4px;
 }
 
-body header nav .rightSide li span, body header nav .rightSide li * span {
+body header nav .rightSide li span,
+body header nav .rightSide li * span {
   color: #0089cf;
   vertical-align: top;
 }
@@ -90,5 +95,35 @@ body header .topWrapper .rightSide {
   display: inline-block;
   vertical-align: bottom;
   width: 26%;
+}
+
+body header .topWrapper h3 {
+  color: #333333;
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 17px;
+}
+
+body header .topWrapper h2 {
+  color: #333333;
+  font-size: 35px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+body header .topWrapper .heart {
+  border: #e4e4e4 1px solid;
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+  position: relative;
+  margin-bottom: 17px;
+}
+
+body header .topWrapper .heart img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
 }
 /*# sourceMappingURL=main.css.map */
