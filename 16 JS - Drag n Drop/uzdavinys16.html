@@ -138,11 +138,9 @@
             if (ev.target.hasChildNodes()) {
 
                 parent = document.getElementById(pabaigosKoordinates);
-                try{ senas = document.getElementById(pabaigosKoordinates).firstElementChild;}catch(err){}
                 naujas = document.getElementById(figurosID);
-                try{ senasClass = document.getElementById(pabaigosKoordinates).firstElementChild.className;}
-                catch(err){};
-
+                try{ senas = document.getElementById(pabaigosKoordinates).firstElementChild;}catch(err){}
+                try{ senasClass = document.getElementById(pabaigosKoordinates).firstElementChild.className;}catch(err){};
                 try{document.getElementById("tekstas4").innerHTML = senasClass;}catch(err){};
 
                 

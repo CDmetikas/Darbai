@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://use.fontawesome.com/6603c9fd94.js"></script>
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="container">
+        <form action="login.php" method="post">
+            <input type="password" name="pass1" placeholder="Naujas Slaptažodis">
+            <input type="password" name="pass2" placeholder="Pakartoti Naują Slaptažodį">
+            <button>Login</button>
+        </form>
+
+        <button onclick="login()">Login AJAX</button>
+    </div>
+    <p></p>
+</body>
+<script>
+    function login() {
+        $('p').html('Slaptažodis keičiamas...');
+        $.post('login.php', {
+            pass1: $('input[name="pass1"]').val(),
+            pass2: $('input[name="pass2"]').val()
+        }).done(function(resp) {
+            if (resp.success) {
+                $('input').val('');
+                $('p').html('Slaptažodis pakeistas');
+            } else {
+                $('p').html(resp.error)
+            }
+        });
+
+    }
+</script>
+
+</html>
