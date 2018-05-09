@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <title>Document</title>
+    <script>
+        $(function() {
+            gautiLentele();
+        });
+
+        function gautiLentele() {
+            $.post('lentele.php', function(resp) {
+                if (resp.success) {
+                    rodytilentele(resp.data);
+                } else {
+                    $('p').text('kazkokia klaida');
+                }
+            }).fail(function() {
+                $('p').text('kazkokia rimta klaida');
+            });
+        }
+
+        function rodytilentele(data) {
+            var txt = '';
+            data.forEach(x => {
+                txt += '<tr>' +
+                    '<td>' + x.id + '</td>' +
+                    '<td id="date' + x.id + '">' + x.date + '</td>' +
+                    '<td id="number' + x.id + '">' + x.number + '</td>' +
+                    '<td id="distance' + x.id + '">' + x.distance + '</td>' +
+                    '<td id="time' + x.id + '">' + x.time + '</td>' +
+                    '<td><button class="btn btn-outline-primary btn-sm" onclick="trinti(' + x.id + ')">Trinti</button></td>' +
+                    '<td><button class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#myModal" onclick="openRedaguoti(' + x.id + ')">Redaguoti</button></td>'
+                '</tr>';
+            });
+            document.querySelector('tbody').innerHTML = txt;
+        }
+
+        function Prideti() {
+            $.post('prideti.php', {
+                date: $('input[name="date"]').val(),
+                number: $('input[name="number"]').val(),
+                distance: $('input[name="distance"]').val(),
+                time: $('input[name="time"]').val()
+            }).done(function(resp) {
+                if (resp.success) {
+                    $('input').val('');
+                    $('p').html('Duomenys suvesti');
+                    gautiLentele();
+                } else {
+                    $('p').html(resp.error)
+                }
+            });
+        }
+
+        function trinti(autoId) {
+            $.get('trinti.php', {
+                id: autoId
+            }, function(resp) {
+                if (resp.success) {
+                    gautiLentele();
+                } else {
+                    $('p').text('kazkokia klaida trinant');
+                }
+            }).fail(function() {
+                $('p').text('kazkokia rimta klaida trinant');
+            });
+        }
+
+        function openRedaguoti(redaguotiID) {
+            var id = redaguotiID;
+            data = document.getElementById('date' + redaguotiID).innerHTML;
+            document.getElementById('date').value = data;
+            data = document.getElementById('number' + redaguotiID).innerHTML;
+            document.getElementById('number').value = data;
+            data = document.getElementById('distance' + redaguotiID).innerHTML;
+            document.getElementById('distance').value = data;
+            data = document.getElementById('time' + redaguotiID).innerHTML;
+            document.getElementById('time').value = data;
+
+            document.getElementById('redaguotiBTN').style.display = 'block';
+            document.getElementById('pridetiBTN').style.display = 'none';
+
+            document.getElementById('redaguotiBTN').setAttribute("onclick", "saveRedaguoti(" + redaguotiID + ")");
+
+        }
+
+        function moduleBTN() {
+            document.getElementById('redaguotiBTN').style.display = 'none';
+            document.getElementById('pridetiBTN').style.display = 'block';
+        }
+
+        function saveRedaguoti(redaguotiID) {
+            $.get('redaguoti.php', {
+                id: redaguotiID,
+                date: $('input[name="date"]').val(),
+                number: $('input[name="number"]').val(),
+                distance: $('input[name="distance"]').val(),
+                time: $('input[name="time"]').val()
+            }, function(resp) {
+                if (resp.success) {
+                    $('input').val('');
+                    gautiLentele();
+                } else {
+                    $('p').text('kazkokia klaida redaguojant');
+                }
+            }).fail(function() {
+                $('p').text('kazkokia rimta klaida redaguojant');
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#myModal" onclick="moduleBTN()">Pridėti įrašą</button>
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal body -->
+                <div class="modal-body" style="margin: auto;">
+                    <p></p>
+                    <div id="container">
+                        <input type="datetime-local" class="form-control" id="date" name="date" placeholder="Data"><br>
+                        <input type="text" class="form-control" maxlength="6" id="number" name="number" placeholder="Numeriai"><br>
+                        <input type="number" class="form-control" id="distance" name="distance" placeholder="Atstumas"><br>
+                        <input type="number" class="form-control" id="time" name="time" placeholder="Laikas"><br>
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Uždaryti</button>
+                    <button id="pridetiBTN" type="button" class="btn btn-success" onclick="Prideti()">Pridėti</button>
+                    <button id="redaguotiBTN" type="button" style="display: none;" class="btn btn-success" data-dismiss="modal">Redaguoti</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <p></p>
+    <table class="table-bordered table-hover ">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Data</th>
+                <th>Numeris</th>
+                <th>Atstumas</th>
+                <th>Laikas</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</body>
+
+</html>
